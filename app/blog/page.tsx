@@ -1,10 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { readdirSync, statSync } from 'fs';
-import path from 'path';
 import { motion } from 'framer-motion';
 import { FileText, ChevronRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 const container = {
   hidden: { opacity: 0 },
@@ -22,16 +21,21 @@ const item = {
 };
 
 export default function BlogPage() {
-  const blogDir = path.join(process.cwd(), 'app/blog');
-  const posts = readdirSync(blogDir)
-    .filter(item => {
-      const fullPath = path.join(blogDir, item);
-      return (
-        statSync(fullPath).isDirectory() &&
-        !item.startsWith('[') &&
-        item !== 'api'
-      );
-    });
+  const [posts, setPosts] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/blog')
+      .then(res => res.json())
+      .then(data => {
+        setPosts(data.posts);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching blog posts:', error);
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <div className="max-w-screen-xl mx-auto py-16 px-4">
@@ -55,7 +59,15 @@ export default function BlogPage() {
         animate="show"
         className="grid gap-6 md:grid-cols-2"
       >
-        {posts.length > 0 ? (
+        {loading ? (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center col-span-2 text-muted-foreground"
+          >
+            Loading blog posts...
+          </motion.p>
+        ) : posts.length > 0 ? (
           posts.map(post => (
             <motion.div
               key={post}
