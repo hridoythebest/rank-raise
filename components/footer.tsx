@@ -19,22 +19,22 @@ export function Footer() {
             <h3 className="text-sm font-semibold">Services</h3>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <Link href="/about" className="text-muted-foreground hover:text-primary">
+                <Link href="/services/seo" className="text-muted-foreground hover:text-primary">
                   SEO Optimization
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-muted-foreground hover:text-primary">
+                <Link href="/services/social-media" className="text-muted-foreground hover:text-primary">
                   Social Media Marketing
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-muted-foreground hover:text-primary">
+                <Link href="/services/app-store" className="text-muted-foreground hover:text-primary">
                   App Store Optimization
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-muted-foreground hover:text-primary">
+                <Link href="/services/content" className="text-muted-foreground hover:text-primary">
                   Content Writing
                 </Link>
               </li>
@@ -59,8 +59,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/careers" className="text-muted-foreground hover:text-primary">
-                  Careers
+                <Link href="/contact" className="text-muted-foreground hover:text-primary">
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -69,12 +69,12 @@ export function Footer() {
             <h3 className="text-sm font-semibold">Legal</h3>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <Link href="/privacy" className="text-muted-foreground hover:text-primary">
+                <Link href="/legal/privacy" className="text-muted-foreground hover:text-primary">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="text-muted-foreground hover:text-primary">
+                <Link href="/legal/terms" className="text-muted-foreground hover:text-primary">
                   Terms of Service
                 </Link>
               </li>
