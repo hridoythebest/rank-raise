@@ -22,7 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { toast } from "@radix-ui/react-toast";
+import { useToast } from "@/components/ui/use-toast";
 import { Building2, Mail, MessageSquare, Phone } from "lucide-react";
 
 const formSchema = z.object({
@@ -47,6 +47,8 @@ export default function ContactPage() {
       message: "",
     },
   });
+
+  const { toast } = useToast();
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
