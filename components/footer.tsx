@@ -19,24 +19,29 @@ export function Footer() {
             <h3 className="text-sm font-semibold">Services</h3>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <Link href="/services/seo" className="text-muted-foreground hover:text-primary">
+                <a href="/services" className="text-muted-foreground hover:text-primary">
+                  All Services
+                </a>
+              </li>
+              <li>
+                <a href="/services/seo" className="text-muted-foreground hover:text-primary">
                   SEO Optimization
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/services/social-media" className="text-muted-foreground hover:text-primary">
+                <a href="/services/social-media" className="text-muted-foreground hover:text-primary">
                   Social Media Marketing
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/services/app-store" className="text-muted-foreground hover:text-primary">
+                <a href="/services/app-store" className="text-muted-foreground hover:text-primary">
                   App Store Optimization
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/services/content" className="text-muted-foreground hover:text-primary">
+                <a href="/services/content" className="text-muted-foreground hover:text-primary">
                   Content Writing
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -44,24 +49,24 @@ export function Footer() {
             <h3 className="text-sm font-semibold">Company</h3>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <Link href="/about" className="text-muted-foreground hover:text-primary">
+                <a href="/about" className="text-muted-foreground hover:text-primary">
                   About Us
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/case-studies" className="text-muted-foreground hover:text-primary">
+                <a href="/case-studies" className="text-muted-foreground hover:text-primary">
                   Case Studies
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/blog" className="text-muted-foreground hover:text-primary">
+                <a href="/blog" className="text-muted-foreground hover:text-primary">
                   Blog
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/contact" className="text-muted-foreground hover:text-primary">
+                <a href="/contact" className="text-muted-foreground hover:text-primary">
                   Contact
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -69,14 +74,14 @@ export function Footer() {
             <h3 className="text-sm font-semibold">Legal</h3>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <Link href="/legal/privacy" className="text-muted-foreground hover:text-primary">
+                <a href="/legal/privacy" className="text-muted-foreground hover:text-primary">
                   Privacy Policy
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/legal/terms" className="text-muted-foreground hover:text-primary">
+                <a href="/legal/terms" className="text-muted-foreground hover:text-primary">
                   Terms of Service
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
