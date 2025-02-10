@@ -1,109 +1,253 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import {
+  Brain,
+  Cpu,
+  Globe2,
+  Code2,
+  BarChart2,
+  Search,
+  Share2,
+  Smartphone,
+  Zap,
+  LineChart,
+  Target,
+  Users
+} from 'lucide-react';
+import Link from 'next/link';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 }
+};
+
+const services = [
+  {
+    icon: <Search className="w-8 h-8" />,
+    title: "SEO Optimization",
+    description: "Boost your search rankings with data-driven SEO strategies and AI-powered optimization.",
+    features: ["Keyword Research", "Technical SEO", "Content Optimization", "Link Building"],
+    color: "from-blue-500 to-cyan-500"
+  },
+  {
+    icon: <Share2 className="w-8 h-8" />,
+    title: "Social Media Marketing",
+    description: "Engage your audience across all major social platforms with targeted campaigns.",
+    features: ["Content Strategy", "Community Management", "Paid Advertising", "Analytics"],
+    color: "from-purple-500 to-pink-500"
+  },
+  {
+    icon: <Smartphone className="w-8 h-8" />,
+    title: "App Store Optimization",
+    description: "Maximize your app's visibility and downloads with expert ASO techniques.",
+    features: ["Keyword Optimization", "Conversion Rate", "A/B Testing", "Competition Analysis"],
+    color: "from-green-500 to-emerald-500"
+  },
+  {
+    icon: <LineChart className="w-8 h-8" />,
+    title: "Performance Marketing",
+    description: "Drive measurable results with data-driven performance marketing strategies.",
+    features: ["PPC Campaigns", "Conversion Tracking", "ROI Analysis", "Retargeting"],
+    color: "from-orange-500 to-red-500"
+  }
+];
+
+const processSteps = [
+  {
+    icon: <Target className="w-6 h-6" />,
+    title: "Strategy Development",
+    description: "We analyze your needs and create a custom digital strategy."
+  },
+  {
+    icon: <Zap className="w-6 h-6" />,
+    title: "Implementation",
+    description: "Our team executes the strategy with precision and care."
+  },
+  {
+    icon: <BarChart2 className="w-6 h-6" />,
+    title: "Monitoring",
+    description: "We track performance and make data-driven adjustments."
+  },
+  {
+    icon: <Users className="w-6 h-6" />,
+    title: "Growth & Scale",
+    description: "Scale your success with continuous optimization."
+  }
+];
+
 export default function ServicesPage() {
   return (
-    <div className="container py-20">
-      <div className="mx-auto max-w-3xl text-center">
-        <h1 className="bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl">
-          Our Digital Marketing Services
-        </h1>
-        <p className="mt-6 text-lg text-muted-foreground">
-          Comprehensive digital solutions tailored to elevate your online presence and drive measurable results.
-        </p>
-      </div>
-
-      <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {[
-          {
-            title: "SEO Optimization",
-            description: "Boost your search rankings with data-driven strategies, technical optimization, and content enhancement.",
-            features: [
-              "Keyword Research & Analysis",
-              "On-Page SEO Optimization",
-              "Technical SEO Audits",
-              "Link Building Strategies"
-            ]
-          },
-          {
-            title: "Social Media Marketing",
-            description: "Build brand awareness and engage your audience across all major social platforms.",
-            features: [
-              "Content Strategy & Creation",
-              "Community Management",
-              "Paid Social Campaigns",
-              "Performance Analytics"
-            ]
-          },
-          {
-            title: "App Store Optimization",
-            description: "Maximize your app's visibility and downloads with expert ASO strategies.",
-            features: [
-              "Keyword Optimization",
-              "Conversion Rate Optimization",
-              "A/B Testing",
-              "Competitor Analysis"
-            ]
-          },
-          {
-            title: "Video SEO",
-            description: "Optimize your video content for better reach and engagement across platforms.",
-            features: [
-              "Video Keyword Research",
-              "Thumbnail Optimization",
-              "Video Content Strategy",
-              "Analytics & Reporting"
-            ]
-          },
-          {
-            title: "Content Writing",
-            description: "Create engaging, SEO-optimized content that resonates with your target audience.",
-            features: [
-              "Blog Posts & Articles",
-              "Website Copy",
-              "Product Descriptions",
-              "Email Newsletters"
-            ]
-          },
-          {
-            title: "Analytics & Reporting",
-            description: "Track and analyze your digital performance with comprehensive reporting.",
-            features: [
-              "Custom Dashboard Setup",
-              "Performance Tracking",
-              "ROI Analysis",
-              "Monthly Reports"
-            ]
-          }
-        ].map((service) => (
-          <div
-            key={service.title}
-            className="group relative overflow-hidden rounded-lg border border-border/40 bg-background p-6 transition-colors hover:border-border"
+    <main className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative py-20 overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.1 }}
+          className="absolute inset-0 bg-grid-white/10"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
+            backgroundSize: '40px 40px',
+          }}
+        />
+        
+        <div className="relative z-10 max-w-screen-xl mx-auto px-4">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-6xl font-bold text-center gradient-text mb-6"
           >
-            <h3 className="text-xl font-semibold">{service.title}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              {service.description}
-            </p>
-            <ul className="mt-4 space-y-2">
-              {service.features.map((feature) => (
-                <li key={feature} className="flex items-center text-sm">
-                  <svg
-                    className="mr-2 h-4 w-4 text-primary"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
+            Digital Marketing Services
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl text-center text-muted-foreground max-w-2xl mx-auto mb-12"
+          >
+            Transform your digital presence with our cutting-edge services
+            powered by AI and data-driven strategies
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Services Grid */}
+      <section className="py-20 px-4">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              variants={itemVariants}
+              className="group"
+            >
+              <div className="cyberpunk-card p-8 rounded-lg h-full relative overflow-hidden">
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+                <div className="relative z-10">
+                  <div className="p-3 rounded-full bg-primary/10 text-primary w-fit mb-6 group-hover:neon-text transition-all">
+                    {service.icon}
+                  </div>
+                  <h3 className="text-2xl font-semibold mb-4 group-hover:text-primary transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-6">
+                    {service.description}
+                  </p>
+                  <ul className="space-y-2">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-center text-sm">
+                        <Zap className="w-4 h-4 mr-2 text-primary" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-20 px-4 relative overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.1 }}
+          className="absolute inset-0 bg-grid-white/10"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
+            backgroundSize: '40px 40px',
+          }}
+        />
+        
+        <div className="relative z-10 max-w-screen-xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold text-center gradient-text mb-12"
+          >
+            Our Process
+          </motion.h2>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-4 gap-6"
+          >
+            {processSteps.map((step, index) => (
+              <motion.div
+                key={step.title}
+                variants={itemVariants}
+                className="relative group"
+              >
+                <div className="cyberpunk-card p-6 rounded-lg text-center h-full">
+                  <div className="flex justify-center mb-4">
+                    <div className="p-3 rounded-full bg-primary/10 text-primary group-hover:neon-text transition-all">
+                      {step.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                    {step.title}
+                  </h3>
+                  <p className="text-muted-foreground">
+                    {step.description}
+                  </p>
+                  {index < processSteps.length - 1 && (
+                    <motion.div
+                      className="hidden md:block absolute top-1/2 -right-3 w-6 h-px bg-primary/50"
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
                     />
-                  </svg>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </div>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-screen-lg mx-auto text-center"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
+            Ready to Transform Your Digital Strategy?
+          </h2>
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Let's work together to achieve your digital marketing goals.
+          </p>
+          <Link
+            href="/contact"
+            className="inline-block px-8 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity"
+          >
+            Get Started Today
+          </Link>
+        </motion.div>
+      </section>
+    </main>
   );
 }
