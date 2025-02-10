@@ -13,7 +13,13 @@ import {
   Zap,
   LineChart,
   Target,
-  Users
+  Users,
+  PenTool,
+  Mail,
+  Video,
+  Megaphone,
+  ShoppingCart,
+  Layers
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -60,6 +66,48 @@ const services = [
     description: "Drive measurable results with data-driven performance marketing strategies.",
     features: ["PPC Campaigns", "Conversion Tracking", "ROI Analysis", "Retargeting"],
     color: "from-orange-500 to-red-500"
+  },
+  {
+    icon: <PenTool className="w-8 h-8" />,
+    title: "Content Writing",
+    description: "Create engaging, SEO-optimized content that resonates with your target audience.",
+    features: ["Blog Posts", "Website Copy", "Product Descriptions", "Technical Writing"],
+    color: "from-indigo-500 to-blue-500"
+  },
+  {
+    icon: <Mail className="w-8 h-8" />,
+    title: "Email Marketing",
+    description: "Build and nurture customer relationships with targeted email campaigns.",
+    features: ["Campaign Strategy", "List Management", "A/B Testing", "Analytics & Reporting"],
+    color: "from-yellow-500 to-orange-500"
+  },
+  {
+    icon: <Video className="w-8 h-8" />,
+    title: "Video Marketing",
+    description: "Create compelling video content that drives engagement and conversions.",
+    features: ["Video Production", "YouTube SEO", "Social Video", "Video Analytics"],
+    color: "from-red-500 to-pink-500"
+  },
+  {
+    icon: <Megaphone className="w-8 h-8" />,
+    title: "Influencer Marketing",
+    description: "Partner with relevant influencers to expand your brand reach and credibility.",
+    features: ["Influencer Selection", "Campaign Management", "Performance Tracking", "ROI Analysis"],
+    color: "from-teal-500 to-green-500"
+  },
+  {
+    icon: <ShoppingCart className="w-8 h-8" />,
+    title: "E-commerce Marketing",
+    description: "Optimize your online store for maximum conversions and sales growth.",
+    features: ["Store Optimization", "Product Marketing", "Shopping Ads", "Conversion Rate"],
+    color: "from-violet-500 to-purple-500"
+  },
+  {
+    icon: <Layers className="w-8 h-8" />,
+    title: "Brand Strategy",
+    description: "Develop a strong brand identity that sets you apart from competitors.",
+    features: ["Brand Identity", "Voice & Messaging", "Visual Design", "Brand Guidelines"],
+    color: "from-pink-500 to-rose-500"
   }
 ];
 

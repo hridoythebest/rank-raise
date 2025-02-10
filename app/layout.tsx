@@ -10,21 +10,25 @@ import { Toaster } from '@/components/ui/toaster';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'FutureRank - Next Generation SEO & Digital Marketing Agency',
-  description: 'Transform your digital presence with our cutting-edge SEO, SMM, ASO, and digital marketing solutions. Powered by advanced AI and data-driven strategies.',
-  keywords: 'SEO agency, digital marketing, social media marketing, app store optimization, video SEO, content writing, lead generation',
+  title: 'Rank Raise - Digital Marketing & SEO Agency',
+  description: 'Boost your online presence with our expert digital marketing and SEO services.',
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          <div className="relative min-h-screen">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="min-h-screen bg-background">
             <div className="absolute inset-0 bg-grid-white/[0.02] bg-[length:50px_50px]" />
             <Navbar />
             <main className="relative max-w-screen-xl mx-auto">{children}</main>

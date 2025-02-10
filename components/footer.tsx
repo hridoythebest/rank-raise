@@ -9,7 +9,7 @@ export function Footer() {
           <div>
             <Link href="/" className="flex items-center space-x-2">
               <Zap className="h-6 w-6 text-primary" />
-              <span className="font-bold">FutureRank</span>
+              <span className="font-bold">Rank Raise</span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground">
               Transforming digital presence through innovative SEO and marketing solutions.
@@ -88,7 +88,7 @@ export function Footer() {
         </div>
         <div className="mt-8 border-t border-border/40 pt-8">
           <p className="text-center text-sm text-muted-foreground">
-            {new Date().getFullYear()} FutureRank. All rights reserved.
+            {new Date().getFullYear()} Rank Raise. All rights reserved.
           </p>
         </div>
       </div>

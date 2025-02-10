@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Moon, Sun, Zap } from "lucide-react";
 import { useTheme } from "next-themes";
+import { ThemeToggle } from '@/components/theme-toggle';
 
 const navigation = [
   { name: "Services", href: "/services" },
@@ -28,7 +29,7 @@ export function Navbar() {
         <div className="mr-4 flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <Zap className="h-6 w-6 text-primary" />
-            <span className="font-bold">FutureRank</span>
+            <span className="font-bold">Rank Raise</span>
           </Link>
         </div>
         <div className="hidden md:flex md:flex-1 md:items-center md:justify-between">
@@ -49,15 +50,7 @@ export function Navbar() {
             ))}
           </div>
           <div className="flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-            >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-transform dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-transform dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
+            <ThemeToggle />
             <Button>Get Started</Button>
           </div>
         </div>
