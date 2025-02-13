@@ -44,70 +44,80 @@ const services = [
     title: "SEO Optimization",
     description: "Boost your search rankings with data-driven SEO strategies and AI-powered optimization.",
     features: ["Keyword Research", "Technical SEO", "Content Optimization", "Link Building"],
-    color: "from-blue-500 to-cyan-500"
+    color: "from-blue-500 to-cyan-500",
+    slug: "seo-optimization"
   },
   {
     icon: <Share2 className="w-8 h-8" />,
     title: "Social Media Marketing",
     description: "Engage your audience across all major social platforms with targeted campaigns.",
     features: ["Content Strategy", "Community Management", "Paid Advertising", "Analytics"],
-    color: "from-purple-500 to-pink-500"
+    color: "from-purple-500 to-pink-500",
+    slug: "social-media-marketing"
   },
   {
     icon: <Smartphone className="w-8 h-8" />,
     title: "App Store Optimization",
     description: "Maximize your app's visibility and downloads with expert ASO techniques.",
     features: ["Keyword Optimization", "Conversion Rate", "A/B Testing", "Competition Analysis"],
-    color: "from-green-500 to-emerald-500"
+    color: "from-green-500 to-emerald-500",
+    slug: "app-store-optimization"
   },
   {
     icon: <LineChart className="w-8 h-8" />,
     title: "Performance Marketing",
     description: "Drive measurable results with data-driven performance marketing strategies.",
     features: ["PPC Campaigns", "Conversion Tracking", "ROI Analysis", "Retargeting"],
-    color: "from-orange-500 to-red-500"
+    color: "from-orange-500 to-red-500",
+    slug: "performance-marketing"
   },
   {
     icon: <PenTool className="w-8 h-8" />,
     title: "Content Writing",
     description: "Create engaging, SEO-optimized content that resonates with your target audience.",
     features: ["Blog Posts", "Website Copy", "Product Descriptions", "Technical Writing"],
-    color: "from-indigo-500 to-blue-500"
+    color: "from-indigo-500 to-blue-500",
+    slug: "content-writing"
   },
   {
     icon: <Mail className="w-8 h-8" />,
     title: "Email Marketing",
     description: "Build and nurture customer relationships with targeted email campaigns.",
     features: ["Campaign Strategy", "List Management", "A/B Testing", "Analytics & Reporting"],
-    color: "from-yellow-500 to-orange-500"
+    color: "from-yellow-500 to-orange-500",
+    slug: "email-marketing"
   },
   {
     icon: <Video className="w-8 h-8" />,
     title: "Video Marketing",
     description: "Create compelling video content that drives engagement and conversions.",
     features: ["Video Production", "YouTube SEO", "Social Video", "Video Analytics"],
-    color: "from-red-500 to-pink-500"
+    color: "from-red-500 to-pink-500",
+    slug: "video-marketing"
   },
   {
     icon: <Megaphone className="w-8 h-8" />,
     title: "Influencer Marketing",
     description: "Partner with relevant influencers to expand your brand reach and credibility.",
     features: ["Influencer Selection", "Campaign Management", "Performance Tracking", "ROI Analysis"],
-    color: "from-teal-500 to-green-500"
+    color: "from-teal-500 to-green-500",
+    slug: "influencer-marketing"
   },
   {
     icon: <ShoppingCart className="w-8 h-8" />,
     title: "E-commerce Marketing",
     description: "Optimize your online store for maximum conversions and sales growth.",
-    features: ["Store Optimization", "Product Marketing", "Shopping Ads", "Conversion Rate"],
-    color: "from-violet-500 to-purple-500"
+    features: ["Store Optimization", "Product Marketing", "Cart Recovery", "Customer Retention"],
+    color: "from-pink-500 to-purple-500",
+    slug: "ecommerce-marketing"
   },
   {
     icon: <Layers className="w-8 h-8" />,
     title: "Brand Strategy",
     description: "Develop a strong brand identity that sets you apart from competitors.",
     features: ["Brand Identity", "Voice & Messaging", "Visual Design", "Brand Guidelines"],
-    color: "from-pink-500 to-rose-500"
+    color: "from-pink-500 to-rose-500",
+    slug: "brand-strategy"
   }
 ];
 
@@ -180,34 +190,32 @@ export default function ServicesPage() {
           className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              variants={itemVariants}
-              className="group"
-            >
-              <div className="cyberpunk-card p-8 rounded-lg h-full relative overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
-                <div className="relative z-10">
-                  <div className="p-3 rounded-full bg-primary/10 text-primary w-fit mb-6 group-hover:neon-text transition-all">
-                    {service.icon}
-                  </div>
-                  <h3 className="text-2xl font-semibold mb-4 group-hover:text-primary transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-6">
-                    {service.description}
-                  </p>
-                  <ul className="space-y-2">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center text-sm">
-                        <Zap className="w-4 h-4 mr-2 text-primary" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+            <Link href={`/services/${service.slug}`} key={index}>
+              <motion.div
+                variants={itemVariants}
+                className={`p-6 rounded-lg bg-gradient-to-br ${service.color} border-2 border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer transform hover:-translate-y-1`}
+              >
+                <div className="text-white mb-4">
+                  {service.icon}
                 </div>
-              </div>
-            </motion.div>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-white/80 mb-4">
+                  {service.description}
+                </p>
+                <div className="grid grid-cols-2 gap-2">
+                  {service.features.map((feature, featureIndex) => (
+                    <div
+                      key={featureIndex}
+                      className="bg-white/10 rounded px-2 py-1 text-sm text-white"
+                    >
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </motion.div>
       </section>
