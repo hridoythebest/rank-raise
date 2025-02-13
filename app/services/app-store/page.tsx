@@ -105,7 +105,7 @@ export default function AppStoreServicePage() {
              {
                title: "Visual Assets",
                description: "Create eye-catching screenshots and preview videos",
-               icon: <Image className="w-8 h-8" />
+               icon: <BarChart2 className="w-8 h-8" />
              }
            ].map((item, index) => (
              <motion.div
