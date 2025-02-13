@@ -31,12 +31,9 @@ export async function getServiceContent(slug: string): Promise<ServiceContent | 
     const filePath = path.join(process.cwd(), 'app/services', slug, 'content.md');
     const fileContent = fs.readFileSync(filePath, 'utf8');
     const { data, content } = matter(fileContent);
-    const processedContent = await remark()
-      .use(html, { sanitize: false }) // Allow HTML in markdown
-      .process(content);
 
     return {
-      content: processedContent.toString(),
+      content: content,
       metadata: {
         title: data.title || '',
         description: data.description || ''

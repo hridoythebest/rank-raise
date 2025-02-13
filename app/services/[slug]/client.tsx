@@ -19,13 +19,17 @@ const staggerContainer = {
   }
 };
 
-interface ServicePageProps {
+interface ServicePageClientProps {
   params: { slug: string };
   content: string;
+  metadata: {
+    title: string;
+    description: string;
+  };
 }
 
-export default function ServicePageClient({ params, content }: ServicePageProps) {
-  const title = params.slug
+export default function ServicePageClient({ params, content, metadata }: ServicePageClientProps) {
+  const title = metadata.title || params.slug
     .split('-')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
@@ -63,8 +67,8 @@ export default function ServicePageClient({ params, content }: ServicePageProps)
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              Transform your business with our professional {title.toLowerCase()} services. 
-              We deliver measurable results through data-driven strategies and industry expertise.
+              {metadata.description || `Transform your business with our professional ${title.toLowerCase()} services. 
+              We deliver measurable results through data-driven strategies and industry expertise.`}
             </motion.p>
             <motion.div 
               className="flex justify-center gap-4 flex-wrap"
