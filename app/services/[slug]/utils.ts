@@ -14,7 +14,7 @@ export interface ServiceContent {
 
 export async function generateStaticParams() {
   return [
-    { slug: 'seo-optimization' },
+    { slug: 'seo' },
     { slug: 'social-media-marketing' },
     { slug: 'app-store-optimization' },
     { slug: 'performance-marketing' },

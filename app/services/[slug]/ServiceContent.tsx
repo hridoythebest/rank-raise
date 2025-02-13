@@ -507,14 +507,19 @@ function extractBenefits(content: string): Benefit[] {
       break;
     }
 
-    if (trimmedLine.startsWith('- **')) {
+    // Handle both formats: "#### Title" and "- **Title**"
+    if (trimmedLine.startsWith('#### ') || trimmedLine.startsWith('- **')) {
       if (currentBenefit) {
         benefits.push(currentBenefit);
       }
-      const title = trimmedLine.replace('- **', '').replace('**', '').trim();
+      const title = trimmedLine
+        .replace('#### ', '')
+        .replace('- **', '')
+        .replace('**', '')
+        .trim();
       currentBenefit = { title, items: [] };
-    } else if (trimmedLine.startsWith('  - ') && currentBenefit) {
-      currentBenefit.items.push(trimmedLine.replace('  - ', '').trim());
+    } else if ((trimmedLine.startsWith('- ') || trimmedLine.startsWith('  - ')) && currentBenefit) {
+      currentBenefit.items.push(trimmedLine.replace(/^-\s+/, '').replace(/^\s*-\s+/, '').trim());
     }
   }
 
@@ -526,13 +531,33 @@ function extractBenefits(content: string): Benefit[] {
 }
 
 function extractIntroContent(content: string): string {
-  const match = content.match(/## What We Offer\n\n([^#]*)/);
-  return match ? match[1].trim() : '';
+  // Try frontmatter description first
+  const descriptionMatch = content.match(/description:\s*['"](.+?)['"]/);
+  if (descriptionMatch) {
+    return descriptionMatch[1];
+  }
+
+  // Try What We Offer section
+  const offerMatch = content.match(/## What We Offer\n\n([^#]*)/);
+  if (offerMatch) {
+    return offerMatch[1].trim();
+  }
+
+  // Try first paragraph after title as fallback
+  const firstParaMatch = content.match(/(?:^|\n\n)([^#\n][^\n]+)/);
+  return firstParaMatch ? firstParaMatch[1].trim() : '';
 }
 
 function extractTitle(content: string): string {
-  const match = content.match(/title: '(.+?)'/);
-  return match ? match[1].replace(' Services', '') : '';
+  // Try frontmatter format first
+  const frontmatterMatch = content.match(/title:\s*['"](.+?)['"]/);
+  if (frontmatterMatch) {
+    return frontmatterMatch[1].replace(' Services', '');
+  }
+
+  // Try H1 format as fallback
+  const h1Match = content.match(/^#\s+(.+?)(?:\n|$)/m);
+  return h1Match ? h1Match[1].replace(' Services', '') : '';
 }
 
 function extractSEOProcess(content: string): SEOProcess[] {

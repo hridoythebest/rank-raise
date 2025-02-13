@@ -45,12 +45,12 @@ const services = [
     description: "Boost your search rankings with data-driven SEO strategies and AI-powered optimization.",
     features: ["Keyword Research", "Technical SEO", "Content Optimization", "Link Building"],
     color: "from-blue-500 to-cyan-500",
-    slug: "seo-optimization"
+    slug: "seo"
   },
   {
     icon: <Share2 className="w-8 h-8" />,
     title: "Social Media Marketing",
-    description: "Engage your audience across all major social platforms with targeted campaigns.",
+    description: "Engage your audience and build brand awareness with strategic social media campaigns.",
     features: ["Content Strategy", "Community Management", "Paid Advertising", "Analytics"],
     color: "from-purple-500 to-pink-500",
     slug: "social-media-marketing"
@@ -58,8 +58,8 @@ const services = [
   {
     icon: <Smartphone className="w-8 h-8" />,
     title: "App Store Optimization",
-    description: "Maximize your app's visibility and downloads with expert ASO techniques.",
-    features: ["Keyword Optimization", "Conversion Rate", "A/B Testing", "Competition Analysis"],
+    description: "Increase app visibility and downloads with proven ASO techniques.",
+    features: ["Keyword Optimization", "Visual Assets", "Ratings & Reviews", "Competition Analysis"],
     color: "from-green-500 to-emerald-500",
     slug: "app-store-optimization"
   },
@@ -67,57 +67,49 @@ const services = [
     icon: <LineChart className="w-8 h-8" />,
     title: "Performance Marketing",
     description: "Drive measurable results with data-driven performance marketing strategies.",
-    features: ["PPC Campaigns", "Conversion Tracking", "ROI Analysis", "Retargeting"],
+    features: ["PPC Campaigns", "Conversion Optimization", "A/B Testing", "ROI Tracking"],
     color: "from-orange-500 to-red-500",
     slug: "performance-marketing"
   },
   {
     icon: <PenTool className="w-8 h-8" />,
     title: "Content Writing",
-    description: "Create engaging, SEO-optimized content that resonates with your target audience.",
-    features: ["Blog Posts", "Website Copy", "Product Descriptions", "Technical Writing"],
+    description: "Create engaging content that resonates with your target audience and drives action.",
+    features: ["Blog Posts", "Website Copy", "Product Descriptions", "Email Content"],
     color: "from-indigo-500 to-blue-500",
     slug: "content-writing"
   },
   {
     icon: <Mail className="w-8 h-8" />,
     title: "Email Marketing",
-    description: "Build and nurture customer relationships with targeted email campaigns.",
-    features: ["Campaign Strategy", "List Management", "A/B Testing", "Analytics & Reporting"],
+    description: "Build lasting relationships with your audience through strategic email campaigns.",
+    features: ["Campaign Strategy", "List Management", "Automation", "Analytics"],
     color: "from-yellow-500 to-orange-500",
     slug: "email-marketing"
   },
   {
     icon: <Video className="w-8 h-8" />,
     title: "Video Marketing",
-    description: "Create compelling video content that drives engagement and conversions.",
-    features: ["Video Production", "YouTube SEO", "Social Video", "Video Analytics"],
-    color: "from-red-500 to-pink-500",
+    description: "Tell your story and engage your audience with compelling video content.",
+    features: ["Video Production", "Content Strategy", "Distribution", "Analytics"],
+    color: "from-pink-500 to-rose-500",
     slug: "video-marketing"
   },
   {
     icon: <Megaphone className="w-8 h-8" />,
     title: "Influencer Marketing",
-    description: "Partner with relevant influencers to expand your brand reach and credibility.",
-    features: ["Influencer Selection", "Campaign Management", "Performance Tracking", "ROI Analysis"],
-    color: "from-teal-500 to-green-500",
+    description: "Leverage the power of influencers to reach and engage your target audience.",
+    features: ["Influencer Selection", "Campaign Management", "Content Creation", "ROI Tracking"],
+    color: "from-teal-500 to-cyan-500",
     slug: "influencer-marketing"
   },
   {
     icon: <ShoppingCart className="w-8 h-8" />,
-    title: "E-commerce Marketing",
-    description: "Optimize your online store for maximum conversions and sales growth.",
-    features: ["Store Optimization", "Product Marketing", "Cart Recovery", "Customer Retention"],
-    color: "from-pink-500 to-purple-500",
+    title: "Ecommerce Marketing",
+    description: "Drive sales and grow your online store with comprehensive ecommerce strategies.",
+    features: ["Product Marketing", "Shopping Ads", "Email Campaigns", "Analytics"],
+    color: "from-violet-500 to-purple-500",
     slug: "ecommerce-marketing"
-  },
-  {
-    icon: <Layers className="w-8 h-8" />,
-    title: "Brand Strategy",
-    description: "Develop a strong brand identity that sets you apart from competitors.",
-    features: ["Brand Identity", "Voice & Messaging", "Visual Design", "Brand Guidelines"],
-    color: "from-pink-500 to-rose-500",
-    slug: "brand-strategy"
   }
 ];
 
