@@ -3,6 +3,9 @@
 import { motion } from 'framer-motion';
 import { Search, BarChart2, Settings, Globe2, Zap, LineChart, Target, Users, CheckCircle2, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { CaseStudies } from './components/CaseStudies';
+import { SEOAuditForm } from './components/SEOAuditForm';
+import { SEOStats } from './components/SEOStats';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -245,8 +248,12 @@ export default function SEOServicePage() {
         </div>
       </section>
 
+      <SEOStats />
+      <CaseStudies />
+      <SEOAuditForm />
+
       {/* CTA Section */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 relative overflow-hidden">
         <div className="max-w-screen-xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
