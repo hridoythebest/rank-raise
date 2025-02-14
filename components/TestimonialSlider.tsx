@@ -63,7 +63,7 @@ const testimonials: Testimonial[] = [
   }
 ];
 
-export function TestimonialSlider() {
+export default function TestimonialSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);

@@ -1,9 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import motion from 'framer-motion';
 import { Brain, Cpu, Globe2, Code2, Search, Share2, Smartphone, LineChart, PenTool, Mail, Video, Megaphone } from 'lucide-react';
 import Link from 'next/link';
-import { TestimonialSlider } from '../../components/TestimonialSlider';
+import TestimonialSlider from '../../components/TestimonialSlider';
 
 const glowVariants = {
   initial: { opacity: 0.5 },
