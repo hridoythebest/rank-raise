@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { Brain, Cpu, Globe2, Code2, Search, Share2, Smartphone, LineChart, PenTool, Mail, Video, Megaphone } from 'lucide-react';
 import Link from 'next/link';
-import { ReviewSlider } from '@/components/ReviewSlider';
 
 const glowVariants = {
   initial: { opacity: 0.5 },
@@ -260,8 +259,6 @@ export default function Home() {
           </div>
         </motion.div>
       </section>
-
-      <ReviewSlider />
 
       {/* Stats Section */}
       <section className="py-20 px-4 relative overflow-hidden">
