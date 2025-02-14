@@ -1,8 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Brain, Cpu, Globe2, Code2 } from 'lucide-react';
+import { Brain, Cpu, Globe2, Code2, Search, Share2, Smartphone, LineChart, PenTool, Mail, Video, Megaphone } from 'lucide-react';
 import Link from 'next/link';
+import { ReviewSlider } from '@/components/ReviewSlider';
 
 const glowVariants = {
   initial: { opacity: 0.5 },
@@ -33,24 +34,52 @@ const itemVariants = {
 
 const services = [
   {
-    icon: <Brain className="w-8 h-8" />,
-    title: "AI Solutions",
-    description: "Cutting-edge artificial intelligence solutions for your business"
+    icon: <Search className="w-8 h-8" />,
+    title: "SEO Optimization",
+    description: "Boost your search rankings with data-driven SEO strategies and AI-powered optimization.",
+    slug: "seo"
   },
   {
-    icon: <Cpu className="w-8 h-8" />,
-    title: "Machine Learning",
-    description: "Advanced ML algorithms to optimize your processes"
+    icon: <Share2 className="w-8 h-8" />,
+    title: "Social Media Marketing",
+    description: "Engage your audience and build brand awareness with strategic social media campaigns.",
+    slug: "social-media-marketing"
   },
   {
-    icon: <Globe2 className="w-8 h-8" />,
-    title: "Digital Transformation",
-    description: "Transform your business for the digital age"
+    icon: <Smartphone className="w-8 h-8" />,
+    title: "App Store Optimization",
+    description: "Increase app visibility and downloads with proven ASO techniques.",
+    slug: "app-store-optimization"
   },
   {
-    icon: <Code2 className="w-8 h-8" />,
-    title: "Custom Development",
-    description: "Tailored software solutions for your unique needs"
+    icon: <LineChart className="w-8 h-8" />,
+    title: "Performance Marketing",
+    description: "Drive measurable results with data-driven performance marketing strategies.",
+    slug: "performance-marketing"
+  },
+  {
+    icon: <PenTool className="w-8 h-8" />,
+    title: "Content Writing",
+    description: "Create engaging content that resonates with your target audience and drives action.",
+    slug: "content-writing"
+  },
+  {
+    icon: <Mail className="w-8 h-8" />,
+    title: "Email Marketing",
+    description: "Build lasting relationships with your audience through strategic email campaigns.",
+    slug: "email-marketing"
+  },
+  {
+    icon: <Video className="w-8 h-8" />,
+    title: "Video Marketing",
+    description: "Tell your story and engage your audience with compelling video content.",
+    slug: "video-marketing"
+  },
+  {
+    icon: <Megaphone className="w-8 h-8" />,
+    title: "Influencer Marketing",
+    description: "Leverage the power of influencers to reach and engage your target audience.",
+    slug: "influencer-marketing"
   }
 ];
 
@@ -231,6 +260,8 @@ export default function Home() {
           </div>
         </motion.div>
       </section>
+
+      <ReviewSlider />
 
       {/* Stats Section */}
       <section className="py-20 px-4 relative overflow-hidden">
