@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Brain, Cpu, Globe2, Code2, Search, Share2, Smartphone, LineChart, PenTool, Mail, Video, Megaphone } from 'lucide-react';
 import Link from 'next/link';
+import { TestimonialSlider } from "@/components/TestimonialSlider";
 
 const glowVariants = {
   initial: { opacity: 0.5 },
@@ -333,7 +334,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 px-4 relative overflow-hidden">
+      {/* <section className="py-20 px-4 relative overflow-hidden">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.1 }}
@@ -400,7 +401,9 @@ export default function Home() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </section> */}
+
+      <TestimonialSlider />
 
       {/* CTA Section */}
       <section className="py-20 px-4 relative overflow-hidden">
