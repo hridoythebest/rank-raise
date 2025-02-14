@@ -414,22 +414,29 @@ export default function ServiceContent({ content }: { content: string }) {
 
 function extractFAQs(content: string): FAQItem[] {
   const faqs: FAQItem[] = [];
-  const faqSection = content.split('## Frequently Asked Questions')[1];
-  
-  if (!faqSection) return faqs;
+  const sections = content.split('\n');
+  let inFAQSection = false;
+  let currentQuestion = '';
 
-  const faqMatches = faqSection.match(/### (.*?)\n(.*?)(?=###|$)/gs);
-  
-  if (faqMatches) {
-    faqMatches.forEach(match => {
-      const [, question, answer] = match.match(/### (.*?)\n(.*?)$/s) || [];
-      if (question && answer) {
-        faqs.push({
-          question: question.trim(),
-          answer: answer.trim()
-        });
-      }
-    });
+  for (const line of sections) {
+    const trimmedLine = line.trim();
+
+    if (trimmedLine === '## Frequently Asked Questions') {
+      inFAQSection = true;
+      continue;
+    }
+
+    if (!inFAQSection) continue;
+
+    if (trimmedLine.startsWith('### ')) {
+      currentQuestion = trimmedLine.replace('### ', '').trim();
+    } else if (currentQuestion && trimmedLine && !trimmedLine.startsWith('#')) {
+      faqs.push({
+        question: currentQuestion,
+        answer: trimmedLine
+      });
+      currentQuestion = '';
+    }
   }
 
   return faqs;
@@ -437,54 +444,42 @@ function extractFAQs(content: string): FAQItem[] {
 
 function extractApproachSteps(content: string): ApproachStep[] {
   const steps: ApproachStep[] = [];
-  const approachSection = content.match(/## Our Approach\n\n([\s\S]*?)(?=\n\n##|$)/)?.[1];
+  const sections = content.split('\n');
+  let currentStep: ApproachStep | null = null;
+  let inApproachSection = false;
+  let stepNumber = 1;
 
-  if (!approachSection) return steps;
+  for (const line of sections) {
+    const trimmedLine = line.trim();
 
-  const stepMatches = approachSection.match(/\d+\.\s+\*\*(.*?)\*\*\n([\s\S]*?)(?=\d+\.\s+\*\*|$)/g);
+    if (trimmedLine === '## Our Approach') {
+      inApproachSection = true;
+      continue;
+    }
 
-  if (stepMatches) {
-    stepMatches.forEach(match => {
-      const [, title, items] = match.match(/\d+\.\s+\*\*(.*?)\*\*\n([\s\S]*?)$/) || [];
-      if (title && items) {
-        steps.push({
-          title: title.trim(),
-          items: items
-            .split('\n')
-            .filter(item => item.trim().startsWith('-'))
-            .map(item => item.replace('-', '').trim())
-        });
+    if (!inApproachSection) continue;
+
+    if (trimmedLine.startsWith('## ')) {
+      break;
+    }
+
+    if (trimmedLine.startsWith(`${stepNumber}. **`)) {
+      if (currentStep) {
+        steps.push(currentStep);
       }
-    });
+      const title = trimmedLine.replace(/^\d+\.\s*\*\*(.*?)\*\*$/, '$1').trim();
+      currentStep = { title, items: [] };
+      stepNumber++;
+    } else if (trimmedLine.startsWith('   - ') && currentStep) {
+      currentStep.items.push(trimmedLine.replace(/^\s*-\s*/, '').trim());
+    }
+  }
+
+  if (currentStep) {
+    steps.push(currentStep);
   }
 
   return steps;
-}
-
-function extractCampaignTypes(content: string): CampaignType[] {
-  const types: CampaignType[] = [];
-  const campaignSection = content.match(/### Campaign Types\n\n([\s\S]*?)(?=\n\n##|$)/)?.[1];
-
-  if (!campaignSection) return types;
-
-  const typeMatches = campaignSection.match(/- \*\*(.*?)\*\*\n([\s\S]*?)(?=- \*\*|$)/g);
-
-  if (typeMatches) {
-    typeMatches.forEach(match => {
-      const [, title, items] = match.match(/- \*\*(.*?)\*\*\n([\s\S]*?)$/) || [];
-      if (title && items) {
-        types.push({
-          title: title.trim(),
-          items: items
-            .split('\n')
-            .filter(item => item.trim().startsWith('-'))
-            .map(item => item.replace('-', '').trim())
-        });
-      }
-    });
-  }
-
-  return types;
 }
 
 function extractBenefits(content: string): Benefit[] {
@@ -507,19 +502,14 @@ function extractBenefits(content: string): Benefit[] {
       break;
     }
 
-    // Handle both formats: "#### Title" and "- **Title**"
-    if (trimmedLine.startsWith('#### ') || trimmedLine.startsWith('- **')) {
+    if (trimmedLine.startsWith('- **')) {
       if (currentBenefit) {
         benefits.push(currentBenefit);
       }
-      const title = trimmedLine
-        .replace('#### ', '')
-        .replace('- **', '')
-        .replace('**', '')
-        .trim();
+      const title = trimmedLine.replace(/^-\s*\*\*(.*?)\*\*$/, '$1').trim();
       currentBenefit = { title, items: [] };
-    } else if ((trimmedLine.startsWith('- ') || trimmedLine.startsWith('  - ')) && currentBenefit) {
-      currentBenefit.items.push(trimmedLine.replace(/^-\s+/, '').replace(/^\s*-\s+/, '').trim());
+    } else if (trimmedLine.startsWith('  - ') && currentBenefit) {
+      currentBenefit.items.push(trimmedLine.replace(/^\s*-\s*/, '').trim());
     }
   }
 
@@ -562,26 +552,76 @@ function extractTitle(content: string): string {
 
 function extractSEOProcess(content: string): SEOProcess[] {
   const processes: SEOProcess[] = [];
-  const seoSection = content.match(/## Our SEO Process\n\n([\s\S]*?)(?=\n\n##|$)/)?.[1];
+  const sections = content.split('\n');
+  let currentProcess: SEOProcess | null = null;
+  let inSEOSection = false;
 
-  if (!seoSection) return processes;
+  for (const line of sections) {
+    const trimmedLine = line.trim();
 
-  const processMatches = seoSection.match(/- \*\*(.*?)\*\*\n([\s\S]*?)(?=- \*\*|$)/g);
+    if (trimmedLine === '## Our SEO Process') {
+      inSEOSection = true;
+      continue;
+    }
 
-  if (processMatches) {
-    processMatches.forEach(match => {
-      const [, title, items] = match.match(/- \*\*(.*?)\*\*\n([\s\S]*?)$/) || [];
-      if (title && items) {
-        processes.push({
-          title: title.trim(),
-          items: items
-            .split('\n')
-            .filter(item => item.trim().startsWith('-'))
-            .map(item => item.replace('-', '').trim())
-        });
+    if (!inSEOSection) continue;
+
+    if (trimmedLine.startsWith('## ')) {
+      break;
+    }
+
+    if (trimmedLine.startsWith('- **')) {
+      if (currentProcess) {
+        processes.push(currentProcess);
       }
-    });
+      const title = trimmedLine.replace(/^-\s*\*\*(.*?)\*\*$/, '$1').trim();
+      currentProcess = { title, items: [] };
+    } else if (trimmedLine.startsWith('  - ') && currentProcess) {
+      currentProcess.items.push(trimmedLine.replace(/^\s*-\s*/, '').trim());
+    }
+  }
+
+  if (currentProcess) {
+    processes.push(currentProcess);
   }
 
   return processes;
+}
+
+function extractCampaignTypes(content: string): CampaignType[] {
+  const types: CampaignType[] = [];
+  const sections = content.split('\n');
+  let currentType: CampaignType | null = null;
+  let inCampaignSection = false;
+
+  for (const line of sections) {
+    const trimmedLine = line.trim();
+
+    if (trimmedLine === '### Campaign Types') {
+      inCampaignSection = true;
+      continue;
+    }
+
+    if (!inCampaignSection) continue;
+
+    if (trimmedLine.startsWith('## ')) {
+      break;
+    }
+
+    if (trimmedLine.startsWith('- **')) {
+      if (currentType) {
+        types.push(currentType);
+      }
+      const title = trimmedLine.replace(/^-\s*\*\*(.*?)\*\*$/, '$1').trim();
+      currentType = { title, items: [] };
+    } else if (trimmedLine.startsWith('  - ') && currentType) {
+      currentType.items.push(trimmedLine.replace(/^\s*-\s*/, '').trim());
+    }
+  }
+
+  if (currentType) {
+    types.push(currentType);
+  }
+
+  return types;
 }

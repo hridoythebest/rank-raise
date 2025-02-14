@@ -22,7 +22,10 @@ export async function generateStaticParams() {
     { slug: 'email-marketing' },
     { slug: 'video-marketing' },
     { slug: 'influencer-marketing' },
-    { slug: 'ecommerce-marketing' }
+    { slug: 'ecommerce-marketing' },
+    { slug: 'digital-ads' },
+    { slug: 'review-management' },
+    { slug: 'development' }
   ];
 }
 

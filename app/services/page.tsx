@@ -19,7 +19,8 @@ import {
   Video,
   Megaphone,
   ShoppingCart,
-  Layers
+  Layers,
+  Star
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -110,6 +111,30 @@ const services = [
     features: ["Product Marketing", "Shopping Ads", "Email Campaigns", "Analytics"],
     color: "from-violet-500 to-purple-500",
     slug: "ecommerce-marketing"
+  },
+  {
+    icon: <Target className="w-8 h-8" />,
+    title: "Digital Advertising",
+    description: "Drive targeted traffic and conversions with comprehensive digital advertising solutions.",
+    features: ["Facebook Ads", "Google Ads", "TikTok Ads", "LinkedIn Ads"],
+    color: "from-red-500 to-orange-500",
+    slug: "digital-ads"
+  },
+  {
+    icon: <Star className="w-8 h-8" />,
+    title: "Review Management",
+    description: "Build and maintain a strong online reputation across major review platforms.",
+    features: ["Google Reviews", "Yelp", "BBB", "Trustpilot"],
+    color: "from-yellow-500 to-amber-500",
+    slug: "review-management"
+  },
+  {
+    icon: <Code2 className="w-8 h-8" />,
+    title: "Development",
+    description: "Create powerful, user-friendly websites and mobile apps with our expert development team.",
+    features: ["Website Development", "Mobile Apps", "Custom Solutions", "Maintenance"],
+    color: "from-blue-500 to-indigo-500",
+    slug: "development"
   }
 ];
 
