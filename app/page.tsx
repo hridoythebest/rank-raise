@@ -92,19 +92,31 @@ const stats = [
 
 const testimonials = [
   {
-    quote: "The cyberpunk design and modern solutions transformed our digital presence completely.",
-    author: "Sarah Chen",
-    role: "CTO, TechVision Inc."
+    id: 1,
+    name: "Sarah Chen",
+    role: "CTO",
+    company: "TechVision Inc.",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
+    content: "The cyberpunk design and modern solutions transformed our digital presence completely.",
+    rating: 5
   },
   {
-    quote: "Their AI-powered approach brought incredible results to our business.",
-    author: "Michael Rodriguez",
-    role: "CEO, Future Systems"
+    id: 2,
+    name: "Michael Rodriguez",
+    role: "CEO",
+    company: "Future Systems",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+    content: "Their AI-powered approach brought incredible results to our business.",
+    rating: 5
   },
   {
-    quote: "The most innovative team we've worked with. Simply outstanding!",
-    author: "Emily Zhang",
-    role: "Director, NeoTech"
+    id: 3,
+    name: "Emily Zhang",
+    role: "Director",
+    company: "NeoTech",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+    content: "The most innovative team we've worked with. Simply outstanding!",
+    rating: 5
   }
 ];
 
@@ -334,76 +346,25 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      {/* <section className="py-20 px-4 relative overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.1 }}
-          className="absolute inset-0 bg-grid-white/10"
-          style={{
-            backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-            backgroundSize: '40px 40px',
-          }}
-        />
-        
-        <div className="max-w-screen-xl mx-auto relative">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text"
-          >
-            Client Testimonials
-          </motion.h2>
-          
+      <section className="py-20 px-4">
+        <div className="max-w-screen-xl mx-auto">
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
           >
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.author}
-                variants={itemVariants}
-                whileHover={{ y: -5 }}
-                className="cyberpunk-card p-6 rounded-lg relative group"
-              >
-                <div className="mb-4">
-                  <svg
-                    className="h-8 w-8 text-primary/50"
-                    fill="currentColor"
-                    viewBox="0 0 32 32"
-                  >
-                    <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-                  </svg>
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  {testimonial.quote}
-                </p>
-                <div>
-                  <p className="font-semibold">{testimonial.author}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {testimonial.role}
-                  </p>
-                </div>
-                <motion.div
-                  className="absolute inset-0 border border-primary/20 rounded-lg"
-                  initial={false}
-                  animate={{ scale: [1, 1.02, 1] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                />
-              </motion.div>
-            ))}
+            <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">
+              What Our Clients Say
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Hear from businesses we've helped transform
+            </p>
           </motion.div>
-        </div>
-      </section> */}
 
-      <TestimonialSlider />
+          <TestimonialSlider />
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-20 px-4 relative overflow-hidden">
