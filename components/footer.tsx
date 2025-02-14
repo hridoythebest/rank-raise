@@ -4,7 +4,7 @@ import { Zap } from "lucide-react";
 export function Footer() {
   return (
     <footer className="border-t border-border/40">
-      <div className="container max-w-screen-xl mx-auto py-12">
+      <div className="container max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div>
             <Link href="/" className="flex items-center space-x-2">
@@ -15,7 +15,7 @@ export function Footer() {
               Transforming digital presence through innovative SEO and marketing solutions.
             </p>
           </div>
-          <div>
+          <div className="px-4 sm:px-0">
             <h3 className="text-sm font-semibold">Services</h3>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
@@ -45,7 +45,7 @@ export function Footer() {
               </li>
             </ul>
           </div>
-          <div>
+          <div className="px-4 sm:px-0">
             <h3 className="text-sm font-semibold">Company</h3>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
@@ -70,7 +70,7 @@ export function Footer() {
               </li>
             </ul>
           </div>
-          <div>
+          <div className="px-4 sm:px-0">
             <h3 className="text-sm font-semibold">Legal</h3>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
