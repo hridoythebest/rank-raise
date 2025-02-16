@@ -29,6 +29,11 @@ interface SEOProcess {
   items: string[];
 }
 
+interface CustomCSSProperties extends React.CSSProperties {
+  '--tw-gradient-from'?: string;
+  '--tw-gradient-to'?: string;
+}
+
 export default function ServiceContent({ content }: { content: string }) {
   const faqs = extractFAQs(content);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
@@ -139,7 +144,14 @@ export default function ServiceContent({ content }: { content: string }) {
                 transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
                 className="relative group"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/50 rounded-2xl blur-sm opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
+                <div 
+                  className="absolute inset-0 bg-gradient-to-r rounded-2xl blur-sm opacity-20 group-hover:opacity-30 transition-opacity duration-300"
+                  style={{
+                    background: `linear-gradient(45deg, var(--tw-gradient-stops))`,
+                    '--tw-gradient-from': 'var(--tw-gradient-from)',
+                    '--tw-gradient-to': 'var(--tw-gradient-to)',
+                  } as CustomCSSProperties}
+                />
                 
                 <div className="relative bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl 
                   transition-all duration-300 group hover:-translate-y-1"
