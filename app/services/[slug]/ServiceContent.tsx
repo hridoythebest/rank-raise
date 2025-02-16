@@ -144,7 +144,7 @@ export default function ServiceContent({ content }: { content: string }) {
                     background: `linear-gradient(45deg, var(--tw-gradient-stops))`,
                     '--tw-gradient-from': 'var(--tw-gradient-from)',
                     '--tw-gradient-to': 'var(--tw-gradient-to)',
-                  }} />
+                  } as React.CSSProperties} />
                 
                 <div className="relative bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl 
                   transition-all duration-300 group hover:-translate-y-1"
